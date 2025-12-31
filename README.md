@@ -1,42 +1,39 @@
-# PKM-TULIP: Sistem Pemantauan Interaktif Kualitas Udara dan Radiasi Berbasis IoT
+<div align="center">
 
-![Status](https://img.shields.io/badge/Status-Prototype-green) ![Platform](https://img.shields.io/badge/Platform-ESP32%20%7C%20Web-blue)
+  <img src="https://via.placeholder.com/150?text=PKM+TULIP" alt="Logo Placeholder" width="150" height="150">
 
-## 📖 Deskripsi Proyek
-**PKM-TULIP** adalah solusi pemantauan lingkungan terintegrasi yang diusulkan dalam **Pekan Kreativitas Mahasiswa (PKM) 2025**. Sistem ini dirancang untuk memantau **kualitas udara** dan **tingkat radiasi lingkungan** secara *real-time* sebagai sarana edukasi nuklir bagi masyarakat.
+  # PKM-TULIP: Smart Radiation & Air Quality Monitoring
+  
+  **Sistem Pemantauan Interaktif Kualitas Udara dan Radiasi Berbasis IoT untuk Edukasi Nuklir**
 
-Sistem bekerja dengan mengukur parameter lingkungan menggunakan sensor, mengirimkan data melalui komunikasi jarak jauh LoRa, dan menampilkannya pada dashboard web interaktif.
+  ![Platform](https://img.shields.io/badge/Platform-ESP32-blue?style=for-the-badge&logo=espressif)
+  ![Communication](https://img.shields.io/badge/Comms-LoRa%20433MHz-red?style=for-the-badge)
+  ![Status](https://img.shields.io/badge/Status-Prototype-green?style=for-the-badge)
+  ![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
 
-## 🚀 Fitur Utama
-* **Multi-Sensor Monitoring:** Mendeteksi Gas CO, Suhu, Kelembaban, Tekanan Udara, dan Radiasi Gamma.
-* **Komunikasi LoRa:** Pengiriman data jarak jauh (433MHz) dari titik pantau ke *gateway* internet.
-* **Edukasi Nuklir:** Visualisasi tingkat radiasi yang mudah dipahami (aman/bahaya).
-* **Dashboard Web:** Tampilan grafik *real-time* yang dapat diakses via browser.
-
-## 🛠️ Komponen & Hardware
-[cite_start]Daftar komponen utama yang digunakan dalam proyek ini [cite: 415-484]:
-* **Mikrokontroler:** ESP32 DevKitC V4 (WiFi + Bluetooth).
-* **Sensor Udara:** MQ-7 (Karbon Monoksida) & MQ-135.
-* **Sensor Lingkungan:** DHT22 (Suhu/Kelembaban) & BMP280 (Tekanan Udara).
-* **Detektor Radiasi:** Geiger Counter Kit (Miller Tube GM Tube Kamjay).
-* **Posisi:** GPS NEO-7M.
-* **Komunikasi:** Modul LoRa Ra-02 SX1278 (433MHz).
-* **Power:** Solar Panel 8x11, Baterai 18650, Modul TP4056, MT3608 Step Up.
-
-## 📂 Struktur Folder
-* `/firmware`: Kode program untuk ESP32 (Transmitter & Receiver).
-* `/web-dashboard`: Kode HTML/CSS/JS untuk tampilan antarmuka pengguna.
-* `/docs`: Dokumentasi proyek termasuk Proposal PKM.
-
-## 👥 Tim Pengembang (Kelompok 1)
-Proyek ini dikembangkan oleh mahasiswa **Politeknik Teknologi Nuklir Indonesia - BRIN Yogyakarta**:
-
-1.  **Muhammad Meisandi Baihaqi** (Ketua)
-2.  Nashwa Lu'lu' Muthmainnah
-3.  Fara Ulvia
-4.  Gilas Gethar Prawoto
-5.  Dimas Darmansyah
-*(Beserta anggota tim Himpunan Mahasiswa Einsten.com lainnya)*
+</div>
 
 ---
-*Proyek ini diajukan untuk Pekan Kreativitas Mahasiswa (PKM) Tahun 2025.*
+
+## 📋 Ikhtisar (Overview)
+
+**PKM-TULIP** adalah inovasi teknologi pemantauan lingkungan yang menggabungkan deteksi radiasi nuklir dan polusi udara dalam satu perangkat mandiri. Proyek ini dikembangkan untuk **Pekan Kreativitas Mahasiswa (PKM) 2025** dengan tujuan meningkatkan literasi nuklir masyarakat melalui data yang transparan.
+
+### 🌟 Fitur Unggulan
+- **Dual Monitoring:** Deteksi dini bahaya radiasi Gamma dan gas Karbon Monoksida (CO).
+- **Long Range Telemetry:** Menggunakan modul LoRa SX1278 untuk pengiriman data jarak jauh (tanpa internet di node sensor).
+- **Interactive Dashboard:** Visualisasi data *real-time* berbasis web yang mudah diakses.
+- **Independent Power:** Ditenagai baterai 18650 dengan sistem pengisian panel surya.
+
+---
+
+## 🏗️ Alur Sistem
+
+Data dikumpulkan dari sensor lapangan dan dikirimkan ke server untuk ditampilkan ke masyarakat.
+
+```mermaid
+graph LR
+    A[Node Sensor] -->|LoRa 433MHz| B[Gateway ESP32]
+    B -->|WiFi| C[ThingSpeak Cloud]
+    C -->|API| D[Web Dashboard]
+    D -->|Akses| E[Masyarakat/User]
