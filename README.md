@@ -81,3 +81,112 @@ graph LR
     CLOUD -->|JSON API| WEB[Web Dashboard]
     WEB -->|Visualisasi| USER[Masyarakat]
     end
+
+---
+
+## 🔄 Alur Kerja Sistem
+
+1. **Akuisisi Data**
+   - Sensor MQ-7 / MQ-135 membaca konsentrasi gas CO melalui ADC.
+   - Geiger Counter mendeteksi pulsa radiasi gamma melalui interrupt.
+   - Modul GPS NEO-7M menyediakan koordinat lokasi pengukuran.
+
+2. **Pemrosesan Data**
+   - ESP32 Node memproses data sensor dan mengonversinya ke satuan terukur
+     (ppm untuk gas dan CPM/µSv untuk radiasi).
+
+3. **Transmisi Data**
+   - Data dikirimkan secara periodik menggunakan modul **LoRa 433 MHz**
+     menuju ESP32 Gateway.
+
+4. **Upload ke Cloud**
+   - ESP32 Gateway menerima data dan mengirimkannya ke **ThingSpeak Server**
+     melalui koneksi WiFi menggunakan protokol HTTP.
+
+5. **Visualisasi**
+   - Data ditampilkan dalam bentuk grafik, indikator status, dan peta lokasi
+     pada **Dashboard Web**.
+
+---
+
+## 🧰 Spesifikasi Teknis
+
+### 🔹 Node Sensor (Transmitter)
+- Mikrokontroler : ESP32  
+- Sensor Gas     : MQ-7 / MQ-135  
+- Sensor Radiasi : Geiger Müller Tube  
+- Modul GPS      : NEO-7M  
+- Komunikasi     : LoRa 433 MHz  
+- Catu Daya      : Baterai / Power Bank  
+
+### 🔹 Gateway (Receiver)
+- Mikrokontroler : ESP32  
+- Komunikasi     : LoRa 433 MHz & WiFi  
+- Cloud Server   : ThingSpeak  
+
+---
+
+## 📊 Parameter yang Dipantau
+
+| Parameter | Satuan | Keterangan |
+|---------|--------|------------|
+| Gas CO | ppm | Indikator kualitas udara |
+| Radiasi Gamma | CPM / µSv/h | Tingkat radiasi lingkungan |
+| Lokasi | Latitude & Longitude | Posisi pengukuran |
+| Waktu | Timestamp | Waktu pengambilan data |
+
+---
+
+## 🚨 Klasifikasi Status Lingkungan
+
+| Kondisi | Keterangan |
+|-------|------------|
+| 🟢 Aman | Nilai parameter dalam batas normal |
+| 🟡 Waspada | Terjadi peningkatan nilai |
+| 🔴 Bahaya | Melebihi ambang batas aman |
+
+---
+
+## 🌐 Dashboard Web
+
+Fitur utama dashboard:
+- 📈 Grafik real-time kualitas udara & radiasi  
+- 🧭 Peta lokasi berbasis GPS  
+- 🚦 Indikator status lingkungan  
+- 🕒 Riwayat data pengukuran  
+
+Dashboard dirancang **responsif** sehingga dapat diakses melalui
+desktop maupun perangkat mobile.
+
+---
+
+## 🚀 Keunggulan Sistem
+
+- 📡 Jangkauan komunikasi luas dengan LoRa  
+- ⚡ Monitoring real-time  
+- 🌍 Terintegrasi GPS  
+- 🧠 Media edukasi nuklir yang interaktif  
+- 🔓 Open-source & mudah dikembangkan  
+
+---
+
+## 🔧 Pengembangan Selanjutnya
+
+- Integrasi aplikasi Android  
+- Penambahan notifikasi otomatis (Telegram / WhatsApp)  
+- Analisis tren data jangka panjang  
+- Penambahan sensor lingkungan lainnya  
+
+---
+
+## 📜 Lisensi
+
+Proyek **PKM-TULIP** bersifat **Open Source** dan dikembangkan untuk
+keperluan **pendidikan, penelitian, dan inovasi teknologi lingkungan
+serta nuklir**.
+
+---
+
+<div align="center">
+  <b>🌷 PKM-TULIP — Monitoring Lingkungan untuk Masa Depan yang Aman 🌍</b>
+</div>
