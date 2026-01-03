@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://via.placeholder.com/150?text=PKM+TULIP" alt="Logo PKM TULIP" width="150" height="150">
+  <img src="PKM_TULIP_FINAL/assets/tulip-logo.png" alt="Logo PKM TULIP" width="150">
 
   # PKM-TULIP: Smart Radiation & Air Quality Monitoring
   
